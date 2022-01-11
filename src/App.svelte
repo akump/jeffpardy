@@ -114,6 +114,12 @@
       >
     </h3>
     <span class="material-icons">coffee</span>
+    <h3>
+      Create bug reports on <a
+        href="https://github.com/akump/jeffpardy/issues"
+        target="_blank">Github</a
+      >
+    </h3>
 
     <h3 class="checkbox-setting">
       <label style="padding-right: 5px" for="showAnswer"
