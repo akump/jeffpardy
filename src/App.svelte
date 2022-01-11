@@ -13,6 +13,12 @@
   }
   alwaysShowAnswer = alwaysShowAnswer === "true";
 
+  let showReplay = localStorage.getItem("showReplay");
+  if (showReplay === null) {
+    localStorage.setItem("showReplay", false);
+  }
+  showReplay = showReplay === "true";
+
   let tutorialLearned = localStorage.getItem("tutorialLearned");
   if (tutorialLearned === null || tutorialLearned === "null") {
     localStorage.setItem("tutorialLearned", null);
@@ -31,14 +37,17 @@
   }
 
   function setAnswerVisible() {
+    const answer = document.getElementById("answer");
+    if (answer && answer.style.visibility === "visible" && showReplay) {
+      location.reload();
+    }
     localStorage.setItem("tutorialLearned", true);
     const tutorial = document.getElementById("tutorial");
     if (tutorial) {
       document.getElementById("tutorial").style.display = "none";
     }
-    const hiddenAnswer = document.getElementById("hiddenAnswer");
-    if (hiddenAnswer) {
-      hiddenAnswer.style.visibility = "visible";
+    if (answer) {
+      answer.style.visibility = "visible";
     }
   }
 
@@ -46,10 +55,16 @@
     showSettings = !showSettings;
   }
 
-  function showAnswerHandler(e) {
+  function alwaysShowAnswerHandler(e) {
     const { checked } = e.target;
     localStorage.setItem("alwaysShowAnswer", checked);
     alwaysShowAnswer = checked;
+  }
+
+  function showReplayHandler(e) {
+    const { checked } = e.target;
+    localStorage.setItem("showReplay", checked);
+    showReplay = checked;
   }
 
   async function onMountHandler() {
@@ -83,7 +98,9 @@
   onMount(onMountHandler);
 </script>
 
-<main on:click={setAnswerVisible}>
+<svelte:body on:click={setAnswerVisible} />
+
+<main>
   <span on:click={handleSettingsClick} class="settings material-icons"
     >settings</span
   >
@@ -98,13 +115,26 @@
     </h3>
     <span class="material-icons">coffee</span>
 
-    <h3 class="show-answer">
+    <h3 class="checkbox-setting">
       <label style="padding-right: 5px" for="showAnswer"
         >Always show answer</label
       >
       <input
-        on:change={(e) => showAnswerHandler(e)}
+        on:change={(e) => alwaysShowAnswerHandler(e)}
         bind:checked={alwaysShowAnswer}
+        style="margin: 0; width: 20px; height: 20px;"
+        type="checkbox"
+        id="showAnswer"
+      />
+    </h3>
+
+    <h3 class="checkbox-setting">
+      <label style="padding-right: 5px" for="showReplay"
+        >Click to reload page</label
+      >
+      <input
+        on:change={(e) => showReplayHandler(e)}
+        bind:checked={showReplay}
         style="margin: 0; width: 20px; height: 20px;"
         type="checkbox"
         id="showAnswer"
@@ -112,28 +142,33 @@
     </h3>
   {:else}
     <h1 class="header">{header}</h1>
-    <h1 class="question">{question}</h1>
+    <h2 class="question">{question}</h2>
     <div id="tutorial" class="tutorial" style="display: none;">
-      <h1>
+      <h2>
         Click/tap the screen to show the answer. Refresh the page for new
         questions.
-      </h1>
+      </h2>
     </div>
     <div id="answer" class="answer">
-      <h1 id="hiddenAnswer">{answer}</h1>
-      <!-- <span class="material-icons">
-replay
-</span> -->
+      <h2 id="hiddenAnswer">{answer}</h2>
+      {#if showReplay}
+        <span class="replay material-icons">replay</span>
+      {/if}
     </div>
   {/if}
 </main>
 
 <style>
-  .show-answer {
+  .replay {
+    font-size: 48px;
+    cursor: pointer;
+  }
+  .checkbox-setting {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .settings {
     position: absolute;
     top: 5px;
@@ -142,7 +177,7 @@ replay
     cursor: pointer;
   }
 
-  #hiddenAnswer {
+  #answer {
     visibility: hidden;
   }
 
@@ -152,6 +187,7 @@ replay
     align-items: center;
     justify-content: center;
     padding: 30px 8px;
+    flex-direction: column;
   }
 
   .tutorial {
@@ -169,6 +205,5 @@ replay
     text-align: center;
     padding: 0 1em 1em 1em;
     margin: 0 auto;
-    height: 50vh;
   }
 </style>
