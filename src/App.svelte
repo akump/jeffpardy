@@ -88,8 +88,8 @@
     question = data.question;
     answer = `What's ${removeTags(data.answer)}?`;
     category = data.category.title;
-    price = data.value || 0;
-    header = `${category} - $${price}`;
+    price = data.value ? `$${data.value}` : "Final Jeopardy";
+    header = `${category} - ${price}`;
     if (alwaysShowAnswer) {
       setAnswerVisible();
     }
