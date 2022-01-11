@@ -26,10 +26,17 @@
     tutorialLearned = true;
   }
 
-  function removeTags(str) {
-    if (str === null || str === "") return false;
-    else str = str.toString();
-    return str.replace(/(<([^>]+)>)/gi, "");
+  function sanitizeText(text, isQuestion = false) {
+    if (!text) return text;
+    text = text
+      .replace(/\\'/g, "'")
+      .replace(/<\/?(i|b)>/g, "")
+      .replace(/(\S)(,|:)(\D)/g, "$1$2 $3")
+      .replace(/--/g, " -- ");
+    if (isQuestion) {
+      text = text.replace(/^\(.*\)/g, "");
+    }
+    return text;
   }
 
   function sleep(ms) {
@@ -85,8 +92,8 @@
       await sleep();
       return onMountHandler();
     }
-    question = data.question;
-    answer = `What's ${removeTags(data.answer)}?`;
+    question = sanitizeText(data.question, true);
+    answer = `What's ${sanitizeText(data.answer)}?`;
     category = data.category.title;
     price = data.value ? `$${data.value}` : "Final Jeopardy";
     header = `${category} - ${price}`;
