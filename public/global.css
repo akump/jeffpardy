@@ -22,16 +22,12 @@ body {
 }
 
 a {
-	color: rgb(0,100,200);
-	text-decoration: none;
-}
-
-a:hover {
+	color: white;
 	text-decoration: underline;
 }
 
 a:visited {
-	color: rgb(0,80,160);
+	color: white;
 }
 
 label {
@@ -69,4 +65,9 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+.material-icons {
+    vertical-align: middle;
+    line-height: 1px;
 }
