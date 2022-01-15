@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { sanitizeText, sleep } from "./helper.js";
   let question = "";
   let answer = "";
   let category = "";
@@ -24,23 +25,6 @@
     localStorage.setItem("tutorialLearned", null);
   } else {
     tutorialLearned = true;
-  }
-
-  function sanitizeText(text, isQuestion = false) {
-    if (!text) return text;
-    text = text
-      .replace(/\\'/g, "'")
-      .replace(/<\/?(i|b)>/g, "")
-      .replace(/(\S)(,|:)(\D)/g, "$1$2 $3")
-      .replace(/--/g, " -- ");
-    if (isQuestion) {
-      text = text.replace(/^\(.*\)/g, "");
-    }
-    return text;
-  }
-
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   function setAnswerVisible() {
