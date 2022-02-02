@@ -1,6 +1,6 @@
 # jeffpardy
 
-Jeffpardy is the go website for imporivng at Jeopardy.
+Jeffpardy is the go website for imporivng at Jeopardy. The website will generate new questions from a MASSIVE database of old Jeopardy questions. Simply reload the page for a new question or configure the screen to be clickable to generate a new question.
 
 Link: https://jeffpardy.surge.sh/
 ![Alt text](./example.png?raw=true 'Title')
