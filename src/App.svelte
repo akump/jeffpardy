@@ -15,9 +15,11 @@
 
   let showReplay = localStorage.getItem("showReplay");
   if (showReplay === null) {
-    localStorage.setItem("showReplay", false);
+    localStorage.setItem("showReplay", true);
+    showReplay = true;
+  } else {
+    showReplay = showReplay === "true";
   }
-  showReplay = showReplay === "true";
 
   let tutorialLearned = localStorage.getItem("tutorialLearned");
   if (tutorialLearned === null || tutorialLearned === "null") {
