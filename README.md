@@ -5,6 +5,8 @@ Jeffpardy is the go website for imporivng at Jeopardy. The website will generate
 Link: https://jeffpardy.surge.sh/
 ![Alt text](./example.png?raw=true 'Title')
 
-## Love the site?
-
-[I build this website for free and would love your support through a small coffee donation at buy me a coffee](https://www.buymeacoffee.com/akump) ☕
+## Backlog
+* Some way to choose a category
+* Run through entire categories then move on
+* UX to explain why some clues have odd clue values - dollar amounts were increased in 2001
+* Slight stutter of line below cateogry
