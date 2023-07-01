@@ -1,73 +1,77 @@
 @font-face {
-    font-family: korinna;
-    src: url(Korinna-Regular.otf);
+  font-family: korinna;
+  src: url(Korinna-Regular.otf);
 }
 
-html, body {
-	position: relative;
-	width: 100%;
-	height: 100%;
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-	color: white;
-    background-color: #18168F;
-	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
-    font-family: korinna;
-    height: 100vh;
-    text-transform: uppercase;
-    text-shadow: 4px 3px 4px black;
+  color: white;
+  background-color: #18168f;
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: korinna;
+  height: 100vh;
+  text-transform: uppercase;
+  text-shadow: 4px 3px 4px black;
 }
 
 a {
-	color: white;
-	text-decoration: underline;
+  color: white;
+  text-decoration: underline;
 }
 
 a:visited {
-	color: white;
+  color: white;
 }
 
 label {
-	display: block;
+  display: block;
 }
 
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 input:disabled {
-	color: #ccc;
+  color: #ccc;
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
 }
 
 button:disabled {
-	color: #999;
+  color: #999;
 }
 
 button:not(:disabled):active {
-	background-color: #ddd;
+  background-color: #ddd;
 }
 
 button:focus {
-	border-color: #666;
+  border-color: #666;
 }
 
 .material-icons {
-    vertical-align: middle;
-    line-height: 1px;
+  vertical-align: middle;
+  line-height: 1px;
 }
